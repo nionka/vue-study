@@ -5,14 +5,16 @@
             <div><strong>Описание: </strong>{{ post.body }}</div>
         </div>
         <div class="post__btns">
+            <my-button @click="$router.push(`/posts/${post.id}`)">Открыть</my-button>
             <my-button @click="$emit('remove', post)">удалить</my-button>
-        </div>
-        
+        </div>   
     </div>
 </template>
 
 <script>
+import MyButton from './ui/MyButton.vue'
 export default {
+  components: { MyButton },
     props: {
         post: {
             type: Object,
@@ -24,7 +26,9 @@ export default {
 
 <style>
     .post__btns {
-
+        display: flex;
+        align-self: flex-start;
+        gap: 5px;
     }
 
     .post {
